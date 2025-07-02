@@ -1,76 +1,90 @@
-<style>
-  html, body {
-    overflow: hidden;
-  }
-</style>
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cariere Ana HR</title>
 
-<style>
-  /* Scrollează discret lista de joburi */
-  #rec_job_listing_div {
-    max-height: 1000px;
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox */
-  }
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Helvetica Neue', sans-serif;
+    }
 
-  #rec_job_listing_div::-webkit-scrollbar {
-    display: none; /* Chrome, Safari */
-  }
+    #rec_job_listing_div {
+      max-height: 1000px;
+      overflow-y: scroll;
+      scrollbar-width: none; /* Firefox */
+    }
 
-  /* Alte stiluri existente (dacă le ai deja, poți păstra doar o dată) */
-  .embed_jobs_list_div {
-    border-radius: 12px;
-    border: 1px solid #e4e4e4;
-    padding: 16px;
-    margin-bottom: 16px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
-    transition: background-color 0.2s ease;
-  }
+    #rec_job_listing_div::-webkit-scrollbar {
+      display: none; /* Chrome, Safari */
+    }
 
-  .embed_jobs_list_div:hover {
-    background-color: #f8f8f8;
-  }
+    .embed_jobs_list_div {
+      border-radius: 12px;
+      border: 1px solid #e4e4e4;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+      transition: background-color 0.2s ease;
+    }
 
-  .embed_jobs_list_job_title {
-    font-size: 16px;
-    font-weight: 600;
-    color: #2f2f2f;
-  }
+    .embed_jobs_list_div:hover {
+      background-color: #f8f8f8;
+    }
 
-  .embed_jobs_applynow_btn {
-    display: none !important;
-  }
+    .embed_jobs_list_job_title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #2f2f2f;
+    }
 
-  .embed_jobs_head * {
-    font-family: 'Helvetica Neue', sans-serif !important;
-  }
-</style>
+    .embed_jobs_applynow_btn {
+      display: none !important;
+    }
 
-<link rel="stylesheet" href="https://static.zohocdn.com/recruit/embed_careers_site/css/v1.1/embed_jobs.css" type="text/css">
-<div class="embed_jobs_head embed_jobs_with_style_2">
-	<div class="embed_jobs_head2">
-		<div class="embed_jobs_head3">
-			<div id="rec_job_listing_div"> </div>
-			<script type="text/javascript" src="https://static.zohocdn.com/recruit/embed_careers_site/javascript/v1.1/embed_jobs.js"></script>
-			<script type="text/javascript">
-			rec_embed_js.load({
-				widget_id:"rec_job_listing_div",
-				page_name:"Careers",
-				source:"CareerSite",
-				site:"https://anahr.zohorecruit.com",
-				brand_color:"#84bd00",
-				empty_job_msg:"No current Openings"
-			});
-			</script>
-		</div>
-	</div>
-</div>
-<script>
-  function sendHeight() {
-    const height = document.body.scrollHeight;
-    window.parent.postMessage({ iframeHeight: height }, "*");
-  }
+    .embed_jobs_head * {
+      font-family: 'Helvetica Neue', sans-serif !important;
+    }
+  </style>
 
-  window.addEventListener("load", sendHeight);
-  window.addEventListener("resize", sendHeight);
-</script>
+  <link rel="stylesheet" href="https://static.zohocdn.com/recruit/embed_careers_site/css/v1.1/embed_jobs.css" type="text/css">
+</head>
+<body>
 
+  <div class="embed_jobs_head embed_jobs_with_style_2">
+    <div class="embed_jobs_head2">
+      <div class="embed_jobs_head3">
+        <div id="rec_job_listing_div"> </div>
+
+        <script src="https://static.zohocdn.com/recruit/embed_careers_site/javascript/v1.1/embed_jobs.js"></script>
+        <script>
+          rec_embed_js.load({
+            widget_id:"rec_job_listing_div",
+            page_name:"Careers",
+            source:"CareerSite",
+            site:"https://anahr.zohorecruit.com",
+            brand_color:"#84bd00",
+            empty_job_msg:"Momentan nu avem posturi disponibile."
+          });
+        </script>
+      </div>
+    </div>
+  </div>
+
+  <!-- Script pentru trimiterea înălțimii reale către Wix -->
+  <script>
+    function sendHeight() {
+      const height = document.body.scrollHeight;
+      window.parent.postMessage({ iframeHeight: height }, "*");
+    }
+
+    window.addEventListener("load", sendHeight);
+    window.addEventListener("resize", sendHeight);
+  </script>
+
+</body>
+</html>
